@@ -1,0 +1,18 @@
+body {
+    background-color: $eggshell !important;
+}
+h1 {
+    @include heading-primary;
+}
+h2 {
+    @include heading-secondary;
+}
+p {
+    @include body-copy;
+}
+li {
+    @include body-copy;
+}
+ul {
+    line-height: 32px;
+}
