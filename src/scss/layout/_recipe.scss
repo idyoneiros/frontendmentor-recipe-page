@@ -1,10 +1,28 @@
 #card-container {
     background-color: $white;
-    margin: 128px auto;
-    padding: 48px;
-    max-width: 55%;
+    margin: 32px auto;
+    padding: 24px;
+    max-width: 90%;
     border-radius: 16px;
-}
+  
+    @media (min-width: 768px) {
+      margin: 64px auto;
+      padding: 32px;
+      max-width: 80%;
+    }
+  
+    @media (min-width: 992px) {
+      margin: 96px auto;
+      padding: 40px;
+      max-width: 70%;
+    }
+  
+    @media (min-width: 1200px) {
+      margin: 128px auto;
+      padding: 48px;
+      max-width: 55%;
+    }
+  }
 #recipe-container {
     display: flex;
     flex-direction: column;
@@ -25,58 +43,83 @@
 
 .text-intro-container {
     h1 {
-        font-size: 36px;
-        margin: 32px 0;
+      @include heading-primary;
+      margin: 32px 0;
     }
     p {
-        margin-bottom: 32px;
+      @include body-copy;
+      margin-bottom: 32px;
     }
-}
-
+  }
 .text-prep-list {
     width: 100%;
     border-radius: 16px;
-    background-color: rgb(123, 40, 79,.07);
+    background-color: rgba(123, 40, 79, 0.07);
     margin-bottom: 16px;
+    padding: 24px;
+  
     p {
-        color: $dark-berry;
-        font-size: 20px;
-        margin: 24px 24px 12px 24px;
-        font-weight: 600;
+      @include prep-time-text;
+      margin-bottom: 12px;
     }
+  
     ul {
-        margin: 0 16px 24px 16px;
+      margin: 0;
+      padding-left: 16px;
+      @include responsive-line-height(1.6, 1.4);
     }
+  
     li {
-        font-size: 16px;
-        padding-left: 16px;
-        &::marker {
-            color: $dark-berry;
-            font-size: 12px;
-        }
+      @include body-copy;
+      margin-bottom: 8px;
     }
 }
 .text-prep-container {
-    ul {
-        margin-bottom: 24px;
+    h2 {
+      @include heading-secondary;
     }
+  
+    ul {
+      margin-bottom: 24px;
+      padding-left: 16px;
+      @include responsive-line-height(1.6, 1.4);
+    }
+  
     li {
-        padding-left: 16px;
-        &::marker {
-            color: $nutmeg;
-            font-size: 12px;
-        }
+      @include body-copy;
+      margin-bottom: 8px;
+      
+      &::marker {
+        color: $nutmeg;
+        font-size: 0.75em;
+      }
     }
 }
 .instructions-list {
-    line-height: 32px;
+    @include responsive-line-height(2, 1.6);
     margin-bottom: 32px;
+    padding-left: 20px;
+    
     li {
-        &::marker {
-            font-size: 16px;
-            font-weight: 700;
-        }
-   }
+      @include body-copy;
+      margin-bottom: 16px;
+      padding-left: 8px;
+      
+      &::marker {
+        font-weight: 700;
+        color: $nutmeg;
+      }
+    }
+}
+.nutritional-info-container {
+    h2 {
+      @include heading-secondary;
+    }
+    
+    p {
+      @include body-copy;
+      margin-bottom: 16px;
+    }
 }
 .table-container {
     display: flex;
@@ -84,20 +127,41 @@
 }
 .table {
     font-family: $text-font;
-    width: 95%;
-    line-height: 32px;
-}
-.td-value {
-    font-weight: 700;
-    color: $nutmeg !important;
+    width: 100%;
+    @include responsive-font-size(14px, 15px, 16px, 16px);
+    @include responsive-line-height(1.5, 1.3);
+  
+    tr {
+      border-bottom: 1px solid $light-grey;
+    }
+  
+    td {
+      padding: 12px 8px;
+      
+      &:first-child {
+        font-weight: 500;
+      }
+    }
+  
+    .td-value {
+      font-weight: 700;
+      color: $nutmeg;
+      text-align: right;
+    }
 }
 .attribution {
     display: flex;
     justify-content: center;
     font-family: $text-font;
-    margin-bottom: 24px;
+    @include responsive-font-size(12px, 13px, 14px, 14px);
+    margin-bottom: 16px;
+  
+    @media (min-width: 768px) {
+      margin-bottom: 24px;
+    }
+  
     a {
-        color: $nutmeg;
-        text-decoration: none;
+      color: $nutmeg;
+      text-decoration: none;
     }
 }

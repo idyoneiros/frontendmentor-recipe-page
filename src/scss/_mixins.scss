@@ -1,17 +1,55 @@
 //Typography
 @mixin heading-primary {
     font-family: $title-font;
-    font-size: 32px;
+    @include responsive-font-size(24px, 28px, 32px, 36px);
     color: $dark-charcoal;
+    @include text-break;
 }
-@mixin heading-secondary {
+  @mixin heading-secondary {
     font-family: $title-font;
-    font-size: 28px;
-    margin: 24px 0;
+    @include responsive-font-size(22px, 24px, 26px, 28px);
     color: $nutmeg;
+    @include text-break;
+    margin: 24px 0 16px;
 }
 @mixin body-copy {
     font-family: $text-font;
-    font-size: 16px;
+    @include responsive-font-size(14px, 15px, 16px, 16px);
+    @include responsive-line-height(1.6, 1.4);
     color: $dark-charcoal;
+    @include text-break;
 }
+@mixin prep-time-text {
+    @include responsive-font-size(16px, 18px, 20px, 20px);
+    font-weight: 600;
+    color: $dark-berry;
+}
+@mixin responsive-font-size($xs, $small, $medium, $large) {
+    font-size: $xs;
+    
+    @media (min-width: 576px) {
+      font-size: $small;
+    }
+    
+    @media (min-width: 768px) {
+      font-size: $medium;
+    }
+    
+    @media (min-width: 992px) {
+      font-size: $large;
+    }
+  }
+  @mixin text-break {
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+    hyphenate-character: "-";
+}
+@mixin responsive-line-height($large, $small) {
+    line-height: $large;
+    
+    @media (max-width: 767px) {
+      line-height: $small;
+    }
+}
+  
